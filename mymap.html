@@ -3,23 +3,12 @@
   <body>
     
     <div id="map"></div>
-    <link rel=stylesheet type="text/css" href="/myapp/mymap.css"> 
-    
-<script>
-      function initMap() {
-        var uluru = {lat: 22.813219, lng: 108.333981};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 16,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
-    </script>
+    <link rel=stylesheet type="text/css" href="/css/mymap.css"> 
+    <script type="text/javascript" src="/js/mymap.js"></script>
+    <script type="text/javascript" src="/js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="/js/underscore.js"></script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC0V5BUWnV2NmwLtOJdOlx67wIL9QaMJ0&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC0V5BUWnV2NmwLtOJdOlx67wIL9QaMJ0&libraries=places&callback=initMap">
     </script>
   </body>
 </html>
