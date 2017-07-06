@@ -1,6 +1,8 @@
 var default_zoom = 13;      
 var map;
 var infowindow;
+
+$(function(){
 function initMap() {
         var loc = {lat: 47.6487731, lng: -122.3378029};
         map = new google.maps.Map($('#map')[0], {
@@ -37,3 +39,6 @@ function createMarker(place) {
           infowindow.open(map, this);
         });
       }
+}
+
+initMap();
