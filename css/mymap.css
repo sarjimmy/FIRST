@@ -12,3 +12,45 @@ html body #map {
   height: 100%;
   width: 100%;
 }
+html body #place-info-wrapper {
+  background-color: #4285F4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+html body #place-info-wrapper #hero-header-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+html body #place-info-wrapper #hero-header-wrapper img {
+  width: 408px;
+  height: 305px;
+  top: -53px;
+  position: relative;
+}
+html body #place-info-wrapper #place-basic-info {
+  width: 100%;
+  height: 105px;
+  padding: 16px 24px 20px;
+}
+html body #place-info-wrapper #place-basic-info .info-text {
+  color: white;
+  font-family: Roboto, Arial, sans-serif;
+}
+html body #place-info-wrapper #place-basic-info .place-name {
+  font-size: 18px;
+}
+html body #place-info-wrapper #place-basic-info .place-review-score,
+html body #place-info-wrapper #place-basic-info .place-type {
+  margin-top: 8px;
+  font-size: 13px;
+  color: white;
+}
+html body #place-info-wrapper #place-basic-info .place-review-score {
+  height: 16px;
+}
+html body #place-info-wrapper #place-basic-info .place-type {
+  text-transform: capitalize;
+}

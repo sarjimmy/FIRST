@@ -2,14 +2,22 @@
 <html>
   <body>
     
-    <div id="map"></div>
     <link rel=stylesheet type="text/css" href="/css/mymap.css"> 
-    <script defer type="text/javascript" src="/js/mymap.js"></script>
     <script type="text/javascript" src="/js/jquery-3.2.1.js"></script>
     <script type="text/javascript" src="/js/underscore.js"></script>
-    <script type="text/javascript" async 
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC0V5BUWnV2NmwLtOJdOlx67wIL9QaMJ0&libraries=places">
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC0V5BUWnV2NmwLtOJdOlx67wIL9QaMJ0&libraries=places">
     </script>
-  </body>
+    <script type="text/javascript" src="/js/mymap.js"></script>
+   
+    <div id="map"></div>
+    <div id="place-info-wrapper">
+      <div id="hero-header-wrapper"><img></img></div>
+        <div id="place-basic-info">
+          <div class="place-name info-text"></div>
+          <div class="place-review-score info-text"></div>
+          <div class="place-type info-text"></div>
+        </div>
+    </div> 
+</body>
 </html>
 
