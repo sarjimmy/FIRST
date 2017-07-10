@@ -1,8 +1,7 @@
 var default_zoom = 13;      
-var map;
-var infowindow;
-var service;
-var params;
+var default_radius = 2000;
+var map,service,params,marker,markers_shown;
+
 $(function(){
 function initMap() {
         var loc = {lat: 47.6487731, lng: -122.3378029};
@@ -15,8 +14,8 @@ function initMap() {
 
         var search_bar = new SearchBar(function(type){
           params = {
-                'location':loc,
-                'radius':2000,
+                'location':map.center,
+                'radius':default_radius,
                 'type':type
             };
           service.nearbySearch(params,callback);
@@ -28,6 +27,9 @@ function initMap() {
 }
 
 function callback(results, status) {
+        
+          clearMarker();
+
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i < results.length; i++) {
             createMarker(results[i]);
@@ -38,10 +40,12 @@ function callback(results, status) {
 
 function createMarker(place) {
         var placeLoc = place.geometry.location;
-        var marker = new google.maps.Marker({
+         marker = new google.maps.Marker({
           map: map,
           position: placeLoc
         });
+
+        markers_shown.push(marker);
 
         google.maps.event.addListener(marker, 'click', function() {
           showDetailedInfo(place);
@@ -49,16 +53,37 @@ function createMarker(place) {
 
         $('#close-details').click(function(){
           $('#place-info-wrapper').hide();
+          clearMarker();
         });
       }
+
+
+function clearMarker(){
+
+       if (markers_shown) {
+        _.each(markers_shown, function(marker) {
+            marker.setMap(null);
+        });
+    }
+    markers_shown = []; 
+    
+}
 
 function showDetailedInfo(place){
         var req={placeId:place['place_id']};
         service.getDetails(req,function(place){
-        $('#hero-header-wrapper img').attr('src',place.photos[0].getUrl({'maxWidth':408,'maxheight':407}));
+
+        if(place.photos){
+        $('#place-image').attr('src',place.photos[0].getUrl({'maxWidth':408,'maxHeight':407}));
+        }
+
+        else{
+        $('#place-image').attr('src','https://ssihplc.com/wp-content/uploads/no-image.png');
+}
         $('.place-name').text(place['name']);
         $('.place-review-score').text(place['rating']);
         $('.place-type').text(place['types'][0]);
+        $('.place-address').text(place['formatted_address']);
         $('#place-info-wrapper').show(); 
 });        
         }

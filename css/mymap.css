@@ -52,7 +52,8 @@ html body #place-info-wrapper #place-basic-info .place-name {
   font-size: 18px;
 }
 html body #place-info-wrapper #place-basic-info .place-review-score,
-html body #place-info-wrapper #place-basic-info .place-type {
+html body #place-info-wrapper #place-basic-info .place-type,
+html body #place-info-wrapper #place-basic-info .place-address {
   margin-top: 8px;
   font-size: 13px;
   color: white;
