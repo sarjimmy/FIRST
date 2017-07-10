@@ -2,6 +2,7 @@ var default_zoom = 13;
 var map;
 var infowindow;
 var service;
+var params;
 $(function(){
 function initMap() {
         var loc = {lat: 47.6487731, lng: -122.3378029};
@@ -10,12 +11,20 @@ function initMap() {
           center: loc
         });
 
-        infowindow = new google.maps.InfoWindow();
         service = new google.maps.places.PlacesService(map);
-        service.nearbySearch({
-          location: loc,
-          radius: 2000,
-          type:['restaurant']},callback);
+
+        var search_bar = new SearchBar(function(type){
+          params = {
+                'location':loc,
+                'radius':2000,
+                'type':type
+            };
+          service.nearbySearch(params,callback);
+          
+        });
+
+
+          search_bar.addTo($('body'));
 }
 
 function callback(results, status) {
@@ -35,9 +44,11 @@ function createMarker(place) {
         });
 
         google.maps.event.addListener(marker, 'click', function() {
-          //infowindow.setContent(place.name);
-          //infowindow.open(map, this);
           showDetailedInfo(place);
+        });
+
+        $('#close-details').click(function(){
+          $('#place-info-wrapper').hide();
         });
       }
 

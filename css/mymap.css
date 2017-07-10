@@ -12,12 +12,21 @@ html body #map {
   height: 100%;
   width: 100%;
 }
+html body .search-bar-wrapper {
+  position: absolute;
+  top: 50px;
+  left: 600px;
+}
 html body #place-info-wrapper {
   background-color: #4285F4;
   position: absolute;
   top: 0;
   left: 0;
   display: none;
+}
+html body #place-info-wrapper #close-details {
+  position: relative;
+  left: 358px;
 }
 html body #place-info-wrapper #hero-header-wrapper {
   width: 100%;
