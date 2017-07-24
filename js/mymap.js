@@ -12,21 +12,20 @@ function initMap() {
 
         service = new google.maps.places.PlacesService(map);
 
-        var search_bar = new SearchBar(function(type){
+        var search_bar = new SearchBar(function(keyword){
           params = {
                 'location':map.center,
                 'radius':default_radius,
-                'type':type
+                'keyword':keyword
             };
-          service.nearbySearch(params,callback);
+          service.nearbySearch(params,bigsearchfunc);
           
         });
-
 
           search_bar.addTo($('body'));
 }
 
-function callback(results, status) {
+function bigsearchfunc(results, status) {
         
           clearMarker();
 
@@ -39,10 +38,9 @@ function callback(results, status) {
 
 
 function createMarker(place) {
-        var placeLoc = place.geometry.location;
          marker = new google.maps.Marker({
           map: map,
-          position: placeLoc
+          position: place.geometry.location
         });
 
         markers_shown.push(marker);
@@ -55,6 +53,7 @@ function createMarker(place) {
           $('#place-info-wrapper').hide();
           clearMarker();
         });
+
       }
 
 
@@ -78,10 +77,10 @@ function showDetailedInfo(place){
         }
 
         else{
-        $('#place-image').attr('src','https://ssihplc.com/wp-content/uploads/no-image.png');
+        $('#place-image').attr('src','/css/images/noimage.png');
 }
         $('.place-name').text(place['name']);
-        $('.place-review-score').text(place['rating']);
+        $('.place-review-score').text('Rating: ' + place['rating']);
         $('.place-type').text(place['types'][0]);
         $('.place-address').text(place['formatted_address']);
         $('#place-info-wrapper').show(); 

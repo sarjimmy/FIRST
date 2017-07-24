@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <body>
-    
-    <link rel=stylesheet type="text/css" href="/css/mymap.css"> 
+<head>
+<title>Anran Su's mini Google Maps</title>
     <script type="text/javascript" src="/js/jquery-3.2.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/mymap.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>        
     <script type="text/javascript" src="/js/underscore.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC0V5BUWnV2NmwLtOJdOlx67wIL9QaMJ0&libraries=places">
     </script>
     <script type="text/javascript" src="/js/search_bar.js"></script>
     <script type="text/javascript" src="/js/mymap.js"></script>
-   
+    
+
+</head>
+  <body>
     <div id="map"></div>
+
     <div id="place-info-wrapper">
-      <button id="close-details" type="button">Close</button>
-      <div id="hero-header-wrapper"><img id="place-image"></img></div>
+      <button id="close-details" type="button" class="close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+
+      <div id="hero-header-wrapper">
+        <img id="place-image"></img>
+        
+      </div>
       <div id="place-basic-info-wrapper">
         <div id="place-basic-info">
           <div class="place-name info-text"></div>
