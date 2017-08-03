@@ -77,10 +77,10 @@ function showDetailedInfo(place){
         }
 
         else{
-        $('#place-image').attr('src','/css/images/noimage.png');
+        $('#place-image').attr('src','/images/noimage.png');
 }
         $('.place-name').text(place['name']);
-        $('.place-review-score').text('Rating: ' + place['rating']);
+        $('.place-review-score').text('Rating: ' + place['rating'] + '/5.0');
         $('.place-type').text(place['types'][0]);
         $('.place-address').text(place['formatted_address']);
         $('#place-info-wrapper').show(); 
